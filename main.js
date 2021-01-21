@@ -3,17 +3,15 @@ const endTime = new Date("2022-01-01 00:00:00").getTime();
 setInterval(() => {
   const nowTime = new Date().getTime();
   const time = endTime - nowTime;
+
   const days = Math.floor(time / 1000 / 60 / 60 / 24);
-  const hours =
-    Math.floor((time / 1000 / 60 / 60) % 24) < 10
-      ? `0${Math.floor((time / 1000 / 60 / 60) % 24)}`
-      : Math.floor((time / 1000 / 60 / 60) % 24);
-  const minutes =
-    Math.floor((time / 1000 / 60) % 60) < 10
-      ? `0${Math.floor((time / 1000 / 60) % 60)}`
-      : Math.floor((time / 1000 / 60) % 60);
-  const seconds =
-    Math.floor((time / 1000) % 60) < 10 ? `0${Math.floor((time / 1000) % 60)}` : Math.floor((time / 1000) % 60);
+  let hours = Math.floor((time / 1000 / 60 / 60) % 24);
+  let minutes = Math.floor((time / 1000 / 60) % 60);
+  let seconds = Math.floor((time / 1000) % 60);
+
+  hours = hours < 10 ? `0${hours}` : hours;
+  minutes = minutes < 10 ? `0${minutes}` : minutes;
+  seconds = seconds < 10 ? `0${seconds}` : seconds;
 
   document.querySelector(`.d`).textContent = days;
   document.querySelector(`.h`).textContent = hours;
